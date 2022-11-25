@@ -4,6 +4,7 @@ Red Hat Enterprise Linux Automation with Ansible
 git clone https://github.com/sunnysudershan/RH294.git
 
 git status
+
 git add .
 git status
 git config --global user.email "sunnysudershan@gmail.com"
