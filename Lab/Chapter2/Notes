@@ -156,14 +156,18 @@ mountainview
 [student@workstation manage-ansible-config-02]$ ls -l ~/.ansible.cfg
 -rw-rw-r--. 1 student student 148 Nov 25 13:55 /home/student/.ansible.cfg
 
+[student@workstation ~]$ ansible --version
+ansible 2.8.0
+  config file = /home/student/.ansible.cfg
+  configured module search path = ['/home/student/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.6/site-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 3.6.8 (default, Apr  3 2019, 17:26:03) [GCC 8.2.1 20180905 (Red Hat 8.2.1-3)]
+
 [student@workstation manage-ansible-config-02]$ ls -l ./ansible.cfg
 -rw-rw-r--. 1 student student 148 Nov 25 13:54 ./ansible.cfg
-
-[student@workstation manage-ansible-config-02]$ ANSBILE_CONFIG=/home/student/.ansible.cfg
-[student@workstation manage-ansible-config-02]$ export ANSBILE_CONFIG
-[student@workstation manage-ansible-config-02]$ echo $ANSBILE_CONFIG
-/home/student/.ansible.cfg
-
+[student@workstation ~]$ cd -
+/home/student/labs/chapter1/demo/manage-ansible-config-02
 [student@workstation manage-ansible-config-02]$ ansible --version
 ansible 2.8.0
   config file = /home/student/labs/chapter1/demo/manage-ansible-config-02/ansible.cfg
@@ -171,3 +175,17 @@ ansible 2.8.0
   ansible python module location = /usr/lib/python3.6/site-packages/ansible
   executable location = /usr/bin/ansible
   python version = 3.6.8 (default, Apr  3 2019, 17:26:03) [GCC 8.2.1 20180905 (Red Hat 8.2.1-3)]
+[student@workstation manage-ansible-config-02]$
+
+
+[student@workstation manage-ansible-config-02]$ export ANSIBLE_CONFIG=/etc/ansible/ansible.cfg
+[student@workstation manage-ansible-config-02]$ ansible --version
+ansible 2.8.0
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/home/student/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.6/site-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 3.6.8 (default, Apr  3 2019, 17:26:03) [GCC 8.2.1 20180905 (Red Hat 8.2.1-3)]
+[student@workstation manage-ansible-config-02]$
+[student@workstation manage-ansible-config-02]$ unset ANSBILE_CONFIG
+
