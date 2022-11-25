@@ -1,0 +1,99 @@
+###############################################DEMO#################################################
+[student@workstation deploying-ansible]$ cat inventory
+servera.lab.example.com
+
+[webservers]
+serverb.lab.example.com
+serverc.lab.example.com
+serverd.lab.example.com
+
+[dbservers]
+servere.lab.example.com
+
+[hypervisors]
+172.25.250.[11:19]
+
+[student@workstation deploying-ansible]$ ansible -i inventory --list-hosts all
+  hosts (14):
+    servera.lab.example.com
+    serverb.lab.example.com
+    serverc.lab.example.com
+    serverd.lab.example.com
+    servere.lab.example.com
+    172.25.250.11
+    172.25.250.12
+    172.25.250.13
+    172.25.250.14
+    172.25.250.15
+    172.25.250.16
+    172.25.250.17
+    172.25.250.18
+    172.25.250.19
+[student@workstation deploying-ansible]$
+
+[student@workstation deploying-ansible]$ ansible -i inventory --list-hosts ungrouped
+  hosts (1):
+    servera.lab.example.com
+[student@workstation deploying-ansible]$
+
+[student@workstation deploying-ansible]$ ansible -i inventory --list-hosts webservers
+  hosts (3):
+    serverb.lab.example.com
+    serverc.lab.example.com
+    serverd.lab.example.com
+
+#######################################################################################################
+[student@workstation deploying-ansible]$ cat inventory-2
+servera.lab.example.com
+
+[webservers]
+serverb.lab.example.com
+serverc.lab.example.com
+serverd.lab.example.com
+
+[dbservers]
+servere.lab.example.com
+
+[hypervisors]
+172.25.250.[11:19]
+
+[boston:children]
+webservers
+dbservers
+[student@workstation deploying-ansible]$ ansible -i inventory-2 --list-hosts boston
+  hosts (4):
+    serverb.lab.example.com
+    serverc.lab.example.com
+    serverd.lab.example.com
+    servere.lab.example.com
+[student@workstation deploying-ansible]$
+
+[student@workstation deploying-ansible]$ ansible-inventory --help
+Usage: ansible-inventory [options] [host|group]
+
+Options:
+
+[student@workstation deploying-ansible]$ ansible-inventory -i inventory-2 --graph
+@all:
+  |--@boston:
+  |  |--@dbservers:
+  |  |  |--servere.lab.example.com
+  |  |--@webservers:
+  |  |  |--serverb.lab.example.com
+  |  |  |--serverc.lab.example.com
+  |  |  |--serverd.lab.example.com
+  |--@hypervisors:
+  |  |--172.25.250.11
+  |  |--172.25.250.12
+  |  |--172.25.250.13
+  |  |--172.25.250.14
+  |  |--172.25.250.15
+  |  |--172.25.250.16
+  |  |--172.25.250.17
+  |  |--172.25.250.18
+  |  |--172.25.250.19
+  |--@ungrouped:
+  |  |--servera.lab.example.com
+
+###################################################LAB###########################################
+
