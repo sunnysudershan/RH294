@@ -44,7 +44,7 @@ task
 
 dictionaries have collection of key value paris separated by :space
 
-ends   ... (optional)
+ends  with  ... (optional)
 
 
 
