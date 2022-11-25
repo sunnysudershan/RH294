@@ -1,0 +1,6 @@
+---
+- master dictionary            <-------- Play1
+    - nested dictionary        <-------- task1
+      key1: value1
+      key2: value2
+...

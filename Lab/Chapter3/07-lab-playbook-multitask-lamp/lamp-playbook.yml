@@ -1,0 +1,64 @@
+#### Install the packages firewalld, httpd, mariadb-server, php, php-mysqlnd       ---> ansible-module yum or dnf             
+#Start and enable firwalld service                                                ---> ansible module (service)
+#Allow http protocal from firealld                                                ---> ansible module (firewalld)
+#start and enable httpd service                                                   ---> ansible module (service)
+#start and enable mariadb service                                                 ---> ansible module (service)
+#copy the http://workstation.lab.exmaple.com/labs/index.php to /var/www/html/index.php -> ansible module (get_url)
+#Test webserver conntectivity                                                     ---> ansible module (uri)
+#
+
+---
+- name: Setup the LAMP Server
+  hosts: serverb.lab.example.com
+  become: true
+  tasks:
+    - name: Install latest packages
+      yum:
+        name:
+          - firewalld
+          - httpd
+          - mariadb-server
+          - php
+          - php-mysqlnd
+        state: latest
+
+    - name:  enable and run related services
+      service:
+        name: firewalld
+        enabled: True
+        state: started
+
+    - name:  enable and run related services
+      service:
+        name: httpd
+        enabled: True
+        state: started
+
+    - name:  enable and run related services
+      service:
+        name: mariadb
+        enabled: True
+        state: started
+
+
+    - name: firewalld permits http
+      firewalld:
+        service: http
+        permanent: True
+        state: enabled
+        immediate: True
+
+    - name: Download and copy to php page is installed
+      get_url:
+        url: http://workstation.lab.example.com/labs/index.php
+        dest: /var/www/html/index.php
+        mode: 0644
+
+- name: Test the lamp application 
+  hosts: localhost
+  become: False
+  tasks:
+    - name: Connect to webserver
+      uri:
+        url: http://serverb
+        status_code: 200

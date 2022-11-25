@@ -1,0 +1,13 @@
+---
+- name: This is the first Debug playbook1
+  hosts: servera.lab.example.com
+  tasks:
+
+    - name: This is my first task
+      debug: 
+        msg: This is task1 of play1
+
+    - name: This is my second task
+      debug: 
+        msg: This is task2 of play1
+...

@@ -1,0 +1,2 @@
+ansible-playbook site.yml
+ansible servera.lab.example.com -m uri -a "url=http://localhost return_content=yes"

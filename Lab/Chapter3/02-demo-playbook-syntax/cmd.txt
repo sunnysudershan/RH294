@@ -1,0 +1,6 @@
+ansible-playbook playbook-syntax-01.yml --syntax-check
+ansible-playbook playbook-syntax-02.yml --syntax-check
+ansible-playbook playbook-debug-03.yml --syntax-check
+ansible-playbook playbook-debug-03.yml -C ( dry run )
+ansible-playbook playbook-useradd-04.yml
+ansible servera.lab.example.com -m command -a 'id test2'
