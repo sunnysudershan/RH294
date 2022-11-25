@@ -97,3 +97,57 @@ Options:
 
 ###################################################LAB############################################
 
+[student@workstation deploy-inventory-01]$ cat inventory
+[webservers]
+server[a:d].lab.example.com
+
+[raleigh]
+servera.lab.example.com
+serverb.lab.example.com
+
+[mountainview]
+serverc.lab.example.com
+
+[london]
+serverc.lab.example.com
+
+[development]
+servera.lab.example.com
+
+[testing]
+serverb.lab.example.com
+
+[production]
+serverc.lab.example.com
+serverd.lab.example.com
+
+[us:children]
+raleigh
+mountainview
+
+[student@workstation deploy-inventory-01]$ ansible -i inventory all --list-hosts
+  hosts (4):
+    servera.lab.example.com
+    serverb.lab.example.com
+    serverc.lab.example.com
+    serverd.lab.example.com
+[student@workstation deploy-inventory-01]$
+[student@workstation deploy-inventory-01]$ ansible -i inventory ungrouped --list-hosts
+ [WARNING]: No hosts matched, nothing to do
+
+  hosts (0):
+[student@workstation deploy-inventory-01]$ ansible -i inventory development --list-hosts
+  hosts (1):
+    servera.lab.example.com
+[student@workstation deploy-inventory-01]$
+[student@workstation deploy-inventory-01]$ ansible -i inventory testing --list-hosts
+  hosts (1):
+    serverb.lab.example.com
+[student@workstation deploy-inventory-01]$
+[student@workstation deploy-inventory-01]$ ansible -i inventory production --list-hosts
+  hosts (2):
+    serverc.lab.example.com
+    serverd.lab.example.com
+[student@workstation deploy-inventory-01]$
+
+
