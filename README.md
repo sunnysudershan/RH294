@@ -31,3 +31,20 @@ git status
 
 git push origin main
 
+# Playbook
+vim - Editor indentation more important
+
+.yaml - yet aother markup language
+
+starts with --- (optional)
+
+Play
+
+task
+
+dictionaries have collection of key value paris separated by :space
+
+ends   ... (optional)
+
+
+
