@@ -1,0 +1,8 @@
+---
+- name: Simple Variable example
+  hosts: servera.lab.example.com
+  tasks:
+    - name: install software
+      yum:
+       name: "{{ packages }}"
+       state: present

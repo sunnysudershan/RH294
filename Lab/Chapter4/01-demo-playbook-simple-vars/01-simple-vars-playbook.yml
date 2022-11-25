@@ -1,0 +1,18 @@
+### Install multiple packages as variables --> use ansible vars & yum module 
+#
+---
+- name: Use Simple variables example
+  hosts: development
+  vars:
+    packages:
+      - nmap
+      - httpd
+      - php
+      - mod_ssl
+
+  tasks:
+    - name: Install softwares
+      yum:
+        name: "{{ packages }}"
+        state: present
+...
