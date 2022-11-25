@@ -150,4 +150,17 @@ mountainview
     serverd.lab.example.com
 [student@workstation deploy-inventory-01]$
 
+[student@workstation manage-ansible-config-02]$ ls -l /etc/ansible/ansible.cfg
+-rw-r--r--. 1 root root 19980 May 17  2019 /etc/ansible/ansible.cfg
+
+[student@workstation manage-ansible-config-02]$ ls -l ~/.ansible.cfg
+-rw-rw-r--. 1 student student 148 Nov 25 13:55 /home/student/.ansible.cfg
+
+[student@workstation manage-ansible-config-02]$ ls -l ./ansible.cfg
+-rw-rw-r--. 1 student student 148 Nov 25 13:54 ./ansible.cfg
+
+[student@workstation manage-ansible-config-02]$ ANSBILE_CONFIG=/home/student/.ansible.cfg
+[student@workstation manage-ansible-config-02]$ export ANSBILE_CONFIG
+[student@workstation manage-ansible-config-02]$ echo $ANSBILE_CONFIG
+/home/student/.ansible.cfg
 
