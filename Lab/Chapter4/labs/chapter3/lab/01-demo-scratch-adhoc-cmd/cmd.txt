@@ -1,1 +1,0 @@
- ansible servera.lab.example.com -m yum -a "name=nmap state=latest"

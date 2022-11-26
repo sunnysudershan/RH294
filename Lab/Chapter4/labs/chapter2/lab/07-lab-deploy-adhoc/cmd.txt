@@ -1,5 +1,0 @@
-ansible all -m ping
-ansible localhost -m command -a 'id'
-ansible localhost -m command -a 'id' -u devops
-ansible localhost -m copy -a 'content="Managed by Ansible\n" dest=/etc/motd' -u devops
-ansible localhost -m copy -a 'content="Managed by Ansible\n" dest=/etc/motd' -u devops --become
