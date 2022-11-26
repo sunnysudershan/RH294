@@ -1,0 +1,9 @@
+sudo mkdir /etc/ansible/facts.d/
+cat /etc/ansible/facts.d/dev.fact
+[redhat_training]
+environment: dev
+ssh_port: 22
+root_allowed: yes
+groups_allowed: wheel
+passwords_allowed: yes
+

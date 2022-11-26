@@ -1,0 +1,6 @@
+openssl passwd -6 -salt xyz  redhat
+
+
+ansible-playbook useradd-vault.yml --syntax-check --vault-id @prompt
+
+ansible-playbook useradd-vault.yml --syntax-check --vault-password-file=vault-pass

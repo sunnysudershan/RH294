@@ -1,0 +1,1 @@
+ansible servera.lab.example.com -m setup

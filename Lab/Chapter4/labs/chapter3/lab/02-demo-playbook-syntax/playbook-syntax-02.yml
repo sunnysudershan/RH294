@@ -1,0 +1,10 @@
+---
+- name: < Main Playbook Description >
+  hosts: < inventory IPs, Hostnames, groups, *, all >
+  tasks: 
+
+    - name: < First Play Description >
+      module: < First Task >
+        Augument1: value1
+        Augument2: value2
+...

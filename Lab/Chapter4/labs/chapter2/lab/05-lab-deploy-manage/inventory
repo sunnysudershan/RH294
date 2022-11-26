@@ -1,0 +1,12 @@
+[myself]
+localhost
+
+[intranetweb]
+servera.labe.example.com
+
+[internetweb]
+serverb.lab.example.com
+
+[web:children]
+intranetweb
+internetweb

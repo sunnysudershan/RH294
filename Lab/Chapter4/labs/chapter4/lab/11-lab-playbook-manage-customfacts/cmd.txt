@@ -1,0 +1,3 @@
+commonly used magic variables are host_vars, groups, group_names, inventory_hostname
+
+ansible servera.lab.example.com -m command -a 'systemctl status httpd'

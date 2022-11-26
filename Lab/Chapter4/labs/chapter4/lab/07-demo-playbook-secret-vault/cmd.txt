@@ -1,0 +1,10 @@
+ansible-vault encrypt my_variables
+ansible-vault view my_variables
+ansible-vault edit my_variables
+
+or
+
+ansible-vault create secret.yml
+ansible-vault edit --vault-password-file=vault-pass secret.yml
+ansible-vault decrypt secret.yml --output=secret-decrypted.yml
+ansible-vault rekey secret.yml

@@ -1,0 +1,15 @@
+---
+- name: Install apache and start the service
+  hosts: servera.lab.example.com
+  tasks:
+
+    - name: Install the required packages
+      yum:
+        name: "{{ ansible_facts['ansible_local']['custom']['general']['package'] }}"
+        state: latest
+
+    - name: start the service
+      service:
+        name: "{{ ansible_facts['ansible_local']['custom']['general']['service'] }}"
+        state: "{{ ansible_facts['ansible_local']['custom']['general']['state'] }}"
+        enabled: "{{ ansible_facts['ansible_local']['custom']['general']['enabled'] }}"
