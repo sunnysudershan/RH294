@@ -1,0 +1,21 @@
+# <VirtualHost> & </VirtualHost> – Syntax for Start & Close of VirtualHost.
+
+# ServerAdmin – To mention Email of Webmaster.
+
+# DocumentRoot – Document(Files & Directories) location of your Website.
+
+# ServerName – Domain Name of your Website eg: workstation.lab.example.com
+
+# ErrorLog – To mention log file location for your Apache Web Server errors.
+
+# CustomLog – To mention log file loaction for apache access logs.
+
+# <Directory> & </Directory> – To add some additional features for your VirtualHost for eg: Here we are adding basic authentication for our VirtualHost.
+
+# AuthType – To mention Authentication Type eg: Here we are using Basic Authentication.
+
+# AuthName – To mention the message which will show on your authentication page.
+
+# AuthUserFile – To mention the File Path which is containing Username & Password details eg: Here it is /etc/httpd/htpasswd
+
+# Require – valied-user  – So that it will take only that user which is available in htpasswd file.
