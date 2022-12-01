@@ -1,0 +1,10 @@
+---
+- name: Install DB
+  hosts: servera.lab.example.com
+  tasks:
+    - name: Install mariadb-server if enough space on root
+      yum:
+        name: mariadb-server
+        state: latest
+       loop: "{{ ansible_mounts }}"
+      when: item.mount == "/" and item.size_available > 300000000

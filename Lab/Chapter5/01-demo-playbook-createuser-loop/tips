@@ -1,0 +1,5 @@
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html
+ansible-doc -t lookup -l
+ansible-doc -t lookup items
+-t module 
+-l list

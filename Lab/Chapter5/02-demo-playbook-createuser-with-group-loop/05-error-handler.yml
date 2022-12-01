@@ -1,0 +1,9 @@
+---
+- hosts: webservers
+  tasks:
+    - name: copy remote files
+      fetch:
+        src: /tmp/errorFile
+        dest: /tmp
+      ignore_errors: yes
+
