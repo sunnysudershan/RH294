@@ -1,0 +1,21 @@
+---
+- name: upgrade db
+  hosts: localhost
+  tasks:
+    - name: Upgrade DB
+      block:
+        - name: upgrade the database
+          shell:
+            cmd: /usr/local/bin/upgrade-failed-database
+      
+      rescue:
+        - name: rever the database upgrade
+          shell:
+            cmd: /usr/local/bin/upgrade-database
+
+      always:
+        - name: always restart the database
+          service: 
+            name: mariadb
+            state: restarted
+

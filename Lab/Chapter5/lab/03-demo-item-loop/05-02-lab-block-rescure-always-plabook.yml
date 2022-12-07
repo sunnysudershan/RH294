@@ -1,0 +1,22 @@
+### Test the failed task using ignore_errors keyword
+---
+- name: Task Failure Exercise
+  hosts: serverd.lab.example.com
+  vars:
+    web_package: http
+    db_package: mariadb-server
+    db_service: mariadb
+
+  tasks:
+    - name: Install {{ web_package }} package 
+      yum:
+        name: "{{ web_package }}"
+        state: present
+      ignore_errors: yes
+
+    - name: Install {{ db_package }}
+      yum:
+        name: "{{ db_package }}"
+        state: present
+
+

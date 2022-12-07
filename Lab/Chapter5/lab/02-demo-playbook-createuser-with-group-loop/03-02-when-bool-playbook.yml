@@ -1,0 +1,13 @@
+### If the condition is True it will execute the task or if we keep condition is False it will not execute the task
+---
+- name: Simple Boolean Task Demo
+  hosts: serverc.lab.example.com
+  vars: 
+    run_my_task: False
+
+  tasks:
+    - name: httpd package is installed
+      yum:
+        name: httpd
+      when: run_my_task
+

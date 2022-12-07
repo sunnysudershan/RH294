@@ -1,0 +1,22 @@
+--- 
+- name: Test the failure task
+  hosts: all
+  force_handlers: yes
+  tasks:
+
+    - name: a task which always notifies                        
+      command: /bin/true                                        
+      notify: restart the database                              
+                                                                   
+    - name: a task which failed because the package doent exit
+      yum:
+        name: notapkg
+        state: latest
+
+  handlers:
+  - name: restart the database
+    service:
+      name: vsftpd
+      state: restarted
+      enabled: true
+

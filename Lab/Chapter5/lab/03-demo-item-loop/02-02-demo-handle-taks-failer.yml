@@ -1,0 +1,10 @@
+--- 
+- name: Test the failure task
+  hosts: serverd.lab.example.com
+  tasks:
+    - name: Install the Package
+      yum:
+        name: nopkg
+        state: latest
+      ignore_errors: yes
+

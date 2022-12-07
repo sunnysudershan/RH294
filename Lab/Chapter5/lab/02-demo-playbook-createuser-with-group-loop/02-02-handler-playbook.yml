@@ -1,0 +1,48 @@
+---
+- name: Setup the support infra to manage systems
+  hosts: all
+  tasks:
+    - name: Create the user support as a member of the group wheel
+      user: 
+        groups: wheel
+        name: support
+
+    - name: install sudo config which allows passwordless execution of commands as root
+      copy: 
+        src: files/support.sudo
+        dest: /etc/sudoers.d/support
+
+    - name: Install the ssh key
+      authorized_key:
+        manage_dir: yes
+        user: support
+        key: "{{ lookup('file','files/id_rsa.pub') }}" 
+
+    - name: limit ssh usage to members of the group wheel
+      lineinfile:
+        state: present
+        dest: /etc/ssh/sshd_config
+        line: PasswordAuthentication no
+      notify: Restart the ssh daemon
+
+  handlers:
+    - name: Restart the ssh daemon
+      service:
+        name: sshd
+        state: restarted
+...
+########### 
+# Note: Handlers do not run unless a task calls it to run, 
+# so handle called "Restart the ssh daemon" is dormant task.
+# It has to valled or notified by another tasks inside of the task block
+#
+# Handler will not run unless the tasks notifying it results in a change state if any kind of error inside of 
+# your playbook inside of the main tasks list even though a handler has been notified,
+# handler only execute at the end of all the tasks
+# if any task fails then handler never be called
+#
+# Solution: force handler --> set to true
+# even though a task fails inside of the main tasks block, if tasks have notifed a handler up to the particular point
+# the handler will still execute
+#
+#`

@@ -1,0 +1,40 @@
+Handlers
+- Handlers take action when called
+- Handlers are called when a change is made.
+- Handlers are called using the notify keyword
+- More then one handler can be defined for a playbook or play
+- mutliple handlers can be specified in the notify section
+- Handlers can have multiple tasks.
+- Regardless of how many tasks notify a handler, it will only run once.
+
+
+Error Handling
+ - Ignore errors by using the ignore_errors keywords
+ - Force previosly notifed handler to run using the force_handlers keyword
+ - define failure condotions using the failed_when
+ - Override the "changed" status result using the changed_when keyword
+ - Abort an entire play if any task fails using the any_errors_fatal keyword
+ - Implement a block in order to logically group tasks and provide error handling using the following keywords:
+	. block
+ 	. rescue
+	. always 
+
+Conditionals
+	String -> Equal ==
+        eg: ansible_machine == "x86_64"
+
+
+	numaric -> Equal ==
+        eg: max_memory == 512
+
+        lessthen < , grather then >, lteq <=, gteq >=, not eq !=, 
+
+        varaiable exists "is defined"
+	varaiable not exists "is not defined"
+
+Testing multiple Conditions
+  when: ansible_distribution == "RedHat" or ansible_distribution == "Fedora"
+  when: ansible_distribution_version == "8" and ansible_kernel == "4.18.0-80.el8.x86_64"
+
+or --> Either one condition shd match 
+and --> Two Conditions should match

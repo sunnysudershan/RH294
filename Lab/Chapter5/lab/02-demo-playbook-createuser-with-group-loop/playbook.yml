@@ -1,0 +1,15 @@
+- name: restarting httpd using handlers
+  hosts: servera.lab.example.com
+  force_handlers: yes
+  tasks:
+    - name: restart httpd
+      yum:
+        name: httpd
+        state: latest
+      notify: restart httpd
+
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted

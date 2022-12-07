@@ -1,0 +1,18 @@
+---
+- name: Test changed_when
+  hosts: localhost
+  tasks:
+
+    - name: upgrade-database
+      shell:
+        cmd: /usr/local/bin/upgrade-database
+      register: command_result
+      changed_when: "'Success' in command_result.stdout"
+      notify:
+        - restart_database
+
+  handlers:
+    - name: restart_database
+      service:
+        name: mariadb
+        state: restarted

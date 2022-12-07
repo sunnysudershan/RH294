@@ -1,0 +1,14 @@
+---
+- name: Run user creation script
+  hosts: localhost
+  tasks:
+    - name: Run user cration scription 
+      shell: /usr/local/bin/useradd-script.sh
+      register: command_result
+      ignore_errors: yes
+
+    - name: Report script failure 
+      fail:
+        msg: "The password is missing in the output"
+      when: "'Password missing' in command_result.stdout"
+          

@@ -1,0 +1,15 @@
+---
+- name: Use Git to clone the Ansible repo
+  hosts: workstation.lab.example.com
+  become: yes
+
+  tasks:
+    - name: Install git
+      yum: 
+        name: git
+        state: latest
+
+    - name: Use the git module
+      git:
+        repo: https://github.com/ansible/ansible.git
+        dest: /opt/test/

@@ -1,0 +1,41 @@
+### failed_when some with some condition
+---
+- name: Task Failure Exercise
+  hosts: serverd.lab.example.com
+  vars:
+    web_package: httpd
+    db_package: mariadb-server
+    db_service: mariadb
+
+  tasks:
+    - name: Attempt to set up a webserver 
+      block:
+        - name: Check local time
+          command: date
+          register: command_result 
+          changed_when: false
+
+        - name: Preint local time
+          debug:
+            var: command_result.stdout
+
+        - name: Install {{ web_package }} package 
+          yum:
+            name: "{{ web_package }}"
+            state: present
+          failed_when: web_package == "httpd"
+
+      rescue:
+        - name: Install {{ db_package }}
+          yum:
+            name: "{{ db_package }}"
+            state: present
+
+      always:
+        - name: Start {{ db_service }} service 
+          service:
+            name: "{{ db_service }}"
+            state: started
+
+
+

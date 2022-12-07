@@ -1,0 +1,46 @@
+---
+- name: Mariadb server is installed
+  hosts: serverd.lab.example.com
+  vars:
+    db_packages:
+      - mariadb-server
+      - python3-PyMySQL
+    db_service: mariadb
+    resource_url: http://materials.example.com/labs/control-handlers
+    config_file_url: "{{ resource_url }}/my.cnf.standard"
+    config_file_dst: /etc/my.cnf
+
+  tasks:
+    - name: "{{ db_packages }} packages are installed "
+      yum:
+        name: "{{ db_packages }}"
+        state: present
+      notify:
+        - set db password
+
+    - name: make sure the database service is running
+      service:
+        name: "{{ db_service }}"
+        state: restarted
+        enabled: true
+
+    - name: the {{ config_file_dst }} file has been installed 
+      get_url:
+        url: "{{ config_file_url }}"
+        dest: "{{ config_file_dst }}"
+        owner: mysql
+        group: mysql
+        force: yes
+      notify:
+        - restart db_service
+
+  handlers:
+    - name: restart db_service
+      service:
+        name: "{{ db_service }}"
+        state: restarted
+
+    - name: set db password
+      mysql_user:
+        name: root
+        password: redhat

@@ -1,0 +1,35 @@
+---
+- name: Setup the support infra to manage systems
+  hosts: all
+  force_handlers: true
+  tasks:
+    - name: Create the user support as a member of the group wheel
+      user: 
+        groups: wheel
+        name: support
+
+    - name: install sudo config which allows passwordless execution of commands as root
+      copy: 
+        src: files/support.sudo
+        dest: /etc/sudoers.d/support
+
+    - name: limit ssh usage to members of the group wheel
+      lineinfile:
+        state: present
+        dest: /etc/ssh/sshd_config
+        line: PasswordAuthentication no
+      notify: Restart the ssh daemon
+
+    - name: Install the ssh key
+      authorized_key:
+        manage_dir: yes
+        user: support
+        key: "{{ lookup('file','files/id_rsa.pub') }}" 
+
+
+  handlers:
+    - name: Restart the ssh daemon
+      service:
+        name: sshd
+        state: restarted
+...
