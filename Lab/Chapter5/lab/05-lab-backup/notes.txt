@@ -1,2 +1,0 @@
- - Install the backup package, 
- - check for the existence of /root/archive.tar and create it if it Doesnt

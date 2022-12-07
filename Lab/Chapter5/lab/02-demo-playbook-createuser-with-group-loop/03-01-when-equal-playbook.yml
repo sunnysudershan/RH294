@@ -1,9 +1,0 @@
----
-- hosts: webservers
-  become: yes
-  tasks:
-    - name: copy file 
-      copy: 
-        src: files/index.html
-        dest: /var/www/html/index.html
-      when: ansible_hostname == "serverc"
