@@ -1,0 +1,12 @@
+#### /tmp/file1 add a line "Hello This is new line "
+
+---
+- name: add the line in the file
+  hosts: serverd.lab.example.com
+  tasks:
+
+    - name: add the line 
+      lineinfile:
+        path: /tmp/file1
+        line: "AllowUsers jack john"
+        state: present

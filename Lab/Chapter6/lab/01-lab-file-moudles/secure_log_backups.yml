@@ -1,0 +1,11 @@
+---
+- name: use the fetch moddule to retrive secure log files
+  hosts: all
+  remote_user: root
+  tasks:
+
+    - name: Fetch the /var/log/secure log file from managed hosts
+      fetch:
+        src: /var/log/secure
+        dest: secure-backups
+        flat: no

@@ -1,0 +1,8 @@
+### 
+- name: touch a file to create ( Linux : touch file1 )
+  file:
+    path: /Loction
+    owner: 
+    group:
+    mode:
+    state: 

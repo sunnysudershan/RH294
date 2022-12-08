@@ -1,0 +1,9 @@
+---
+- name: copy multiple  files
+  hosts: serverd.lab.example.com
+  tasks:
+
+    - name: Copy the /var/log to remote /tmp
+      synchronize:
+        src: /var/log
+        dest: /tmp

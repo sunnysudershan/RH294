@@ -1,0 +1,14 @@
+---
+- name: Using the file moudle to ensure SElkux file context
+  hosts: all
+  remote_user: root
+  tasks:
+
+    - name: SELinux file ocontext is set to defaults 
+      file:
+        path: /home/devops/user.txt
+        seuser: _default
+        serole: _default
+        setype: _default
+        selevel: _default
+

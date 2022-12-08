@@ -1,0 +1,10 @@
+---
+- name: Add test to an existing file
+  hosts: all
+  remote_user: devops
+  tasks:
+    - name: Add a single line 
+      lineinfile:
+        path: /home/devops/user.txt
+        line: Thhhhhhhhhhis is line one 
+        state: present

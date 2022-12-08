@@ -1,0 +1,12 @@
+---
+- name: add block of text
+  hosts: all
+  remote_user: devops
+  tasks:
+    - name: Add        a block of text
+      blockinfile:
+        path: /home/devops/user.txt
+        block: |
+          This block of text
+          They are 2 lines
+        state: present
