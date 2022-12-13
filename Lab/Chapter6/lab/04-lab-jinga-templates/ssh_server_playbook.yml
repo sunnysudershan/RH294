@@ -1,0 +1,27 @@
+---
+- name: user a j2 template to setup sshd
+  hosts: all
+  remote_user: student
+  tasks:
+    - name: include needed variable for dev
+      include_vars:
+        file: dev_vars.yml
+      when: inventory_hostname in groups['dev']
+
+    - name: include needed variables for prod 
+      include_vars:
+        file: prod_vars.yml
+      when: inventory_hostname in groups['prod']
+
+    - name: Render the sshd template
+      template:
+        src: sshd_config.j2
+        dest: /etc/ssh/sshd_config
+      notify: Restart sshd
+
+  handlers:
+    - name: Restart sshd 
+      service:
+        name: sshd
+        state: restarted
+

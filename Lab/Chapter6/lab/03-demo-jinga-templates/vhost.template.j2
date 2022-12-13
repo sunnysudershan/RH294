@@ -1,0 +1,23 @@
+## {{ ansible_managed }}
+# Do Not make local modiification 
+Port {{ ssh_port }}
+ListenAddress {{ ansible_default_ipv4.address }}
+
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/sshssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+SyslogFacility AUTHPRIV
+
+PermitRootLogin  {{ root_allowed }}
+AllowGroups {{ groups_allowed }}
+
+AuthorizedKeysFile /etc/.rht_authorized_keys .ssh/authorized_keys
+
+PasswordAuthentication {{ password_allowed }}
+
+ChallengeResponseAuthentication no 
+GSSAPIAuthentication yes
+GSSAPICleanupCredentials no
+UsePAM yes
+

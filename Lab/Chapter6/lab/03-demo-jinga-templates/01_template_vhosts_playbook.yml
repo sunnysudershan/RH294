@@ -1,0 +1,36 @@
+---
+- name: Template to setup a ssh
+  hosts: servera.lab.example.com
+  remote_user: student
+  become: true
+  tasks:
+    - name: include the variables
+      include_vars: vhost.vars
+
+    - name: install the openssh software 
+      yum:
+        name: openssh-server
+        state: installed 
+
+
+    - name: Render the configuration from a j2 teplate
+      template:
+        src: vhost.template.j2
+        dest: /etc/ssh/sshd_config
+        owner: root
+        group: root
+
+
+    - name: start and enable the ssh
+      service:
+        name: sshd
+        state: restarted
+        enabled: yes
+
+    - name: open the port in the firewall
+      firewalld:
+        service: ssh
+        state: enabled
+        immediate: true
+        permanent: true
+
