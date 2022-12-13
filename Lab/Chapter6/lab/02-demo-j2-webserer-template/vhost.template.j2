@@ -1,0 +1,13 @@
+<VirtualHost {{ ansible_default_ipv4.address }}:{{ custom.port }}>
+    ServerAdmin admin@{{ ansible_domain }}
+    ServerName {{ ansible_fqdn }}
+    DocumentRoot /vhosts/{{ ansible_fqdn }}/html
+    ErrorLog logs/{{ ansible_hostname }}_error_log
+    CustomLog logs/{{ ansible_hostname }}_access_log combined
+</VirtualHost>
+
+<Directory "/vhosts/{{ ansible_fqdn }}/html" >
+   AllowOverride none
+   options Indexes 
+   Require all granted
+</Directory>

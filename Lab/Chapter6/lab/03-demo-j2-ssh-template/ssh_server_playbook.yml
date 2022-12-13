@@ -1,0 +1,40 @@
+---
+- name: Template to setup a ssh
+  hosts: all
+  
+  tasks:
+    - name: include the variables
+      include_vars: 
+        file: dev_vars.yml
+      when: inventory_hostname in groups['dev']
+
+    - name: include the variables
+      include_vars: 
+        file: prod_vars.yml
+      when: inventory_hostname in groups['prod']
+
+    - name: Install the openssh
+      yum:
+        name: openssh-server
+        state: installed
+
+    - name: Render the configuration from j2 template
+      template:
+        src: vhost.template.j2
+        dest: /etc/ssh/sshd_config
+        owner: root
+        group: root
+
+
+    - name: start and enable service
+      service:
+        name: sshd
+        state: restarted
+        enabled: yes
+
+    - name: Open the port in the firewall
+      firewalld:
+        service: ssh
+        state: enabled
+        immediate: true
+        permanent: true

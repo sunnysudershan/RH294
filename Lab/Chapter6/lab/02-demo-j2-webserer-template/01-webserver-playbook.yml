@@ -1,0 +1,46 @@
+---
+- name: Template to setup a webserver 
+  hosts: serverc.lab.example.com
+  tasks:
+    - name: include the variables
+      include_vars: vhost.vars
+
+    - name: install the webserver
+      yum:
+        name: httpd
+        state: installed
+
+    - name: Create the custom vhost document root 
+      file:
+        state: directory
+        owner: apache
+        mode: 0755
+        path: /vhosts/{{ ansible_fqdn }}/html
+        setype: httpd_sys_content_t
+    
+    - name: Render the configuration from a j2 template
+      template:
+        src: vhost.template.j2
+        dest: /etc/httpd/conf.d/{{ ansible_hostname }}.conf
+        owner: apache
+        group: root
+
+    - name: install sample content
+      copy:
+        content: "This is {{ ansible_fqdn }} webpage\n"
+        dest: /vhosts/{{ ansible_fqdn }}/html/index.html
+        setype: httpd_sys_content_t
+
+    - name: start and enable the webserver
+      service: 
+        name: httpd
+        state: restarted
+        enabled: yes
+
+    - name: open the port in the firewall
+      firewalld:
+        service: http
+        state: enabled
+        immediate: true
+        permanent: true
+

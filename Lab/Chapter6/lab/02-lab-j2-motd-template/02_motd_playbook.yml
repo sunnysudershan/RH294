@@ -1,0 +1,39 @@
+---
+- name: configure system
+  hosts: all
+
+  tasks:
+    - name: configure /etc/motd
+      template:
+        src: motd-2.j2
+        dest: /etc/motd
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: check file exists
+      stat:
+        path: /etc/motd
+      register: motd
+
+    - name: Display stat results
+      debug:
+        var: motd
+
+    - name: copy custom /etc/issu file
+      copy:
+        src: files/issue
+        dest: /etc/issue
+        owner: root
+        group: root
+        mode: 0644
+
+
+    - name: Ensure /etc/issue.net is a symlink to the /etc/issue
+      file:
+        src: /etc/issu
+        dest: /etc/issue.net
+        owner: root
+        group: root
+        force: yes
+
