@@ -1,0 +1,21 @@
+---
+- name: install and configu webserver 
+  hosts: 
+    - servera.lab.example.com
+    - serverb.lab.example.com
+    - serverc.lab.example.com
+    - serverd.lab.example.com
+
+  tasks:
+
+    - name: Import the web_tasks.yml taks file
+      import_tasks: tasks/web_tasks.yml
+
+    - name: Import the firewall_tasks.yml task file
+      import_tasks: tasks/firewall_tasks.yml
+
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted

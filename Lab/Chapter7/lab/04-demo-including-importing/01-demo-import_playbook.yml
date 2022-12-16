@@ -1,0 +1,12 @@
+---
+- name: prepare the webserver
+  import_playbook: web.yml
+
+- name: prepare the database service
+  import_playbook: db.yml
+
+- name: Testing the import_playbook
+  hosts: webservers
+  tasks:
+    - debug:
+        msg: play1

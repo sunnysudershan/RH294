@@ -1,0 +1,12 @@
+---
+- name: Add multiple lines 
+  hosts: serverd.lab.example.com
+  tasks:
+    - name: add the lines 
+      blockinfile:
+        path: /tmp/file1
+        block: |
+          first line in the additional block of the text
+          second line in the additional block of the text
+          third line
+        state: present

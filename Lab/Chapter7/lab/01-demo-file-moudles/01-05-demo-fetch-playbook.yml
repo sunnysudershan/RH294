@@ -1,0 +1,8 @@
+---
+- name: Copy the logs messages
+  hosts: all
+  tasks:
+    - name: copy /var/log/message to local /tmp
+      fetch:
+        src: /var/log/messages
+        dest: /tmp

@@ -1,0 +1,13 @@
+---
+- name: check the checksum of the file and display the output
+  hosts: serverd.lab.example.com
+  tasks:
+    - name: Verify the cheksum of a file
+      stat:
+        path: /tmp/file1
+        checksum_algorithm: md5
+      register: result
+
+    - debug:
+        msg: "The checksum of the file is {{ result.stat.checksum }}"
+

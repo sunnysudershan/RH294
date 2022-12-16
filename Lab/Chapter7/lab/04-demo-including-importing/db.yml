@@ -1,0 +1,17 @@
+---
+- name: Update db server
+  hosts: webservers
+  tasks:
+    - name: latest db package
+      yum: 
+        name: mariadb-server
+        state: latest
+      notify:
+        - Restart db
+
+  handlers:
+    - name: Restart db
+      service:
+        name: mariadb
+        enabled: yes
+        state: restarted

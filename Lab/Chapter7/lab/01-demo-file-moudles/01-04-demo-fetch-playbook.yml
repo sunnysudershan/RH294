@@ -1,0 +1,8 @@
+---
+- name: Copy the file from remote to local machine 
+  hosts: serverd.lab.example.com
+  tasks:
+    - name: copy /tmp/file1 from remote to local /home/student/file1  
+      fetch:
+        src: /tmp/file1
+        dest: /home/student/

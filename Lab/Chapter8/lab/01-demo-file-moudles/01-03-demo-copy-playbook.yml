@@ -1,0 +1,8 @@
+---
+- name: copy  the file
+  hosts: serverd.lab.example.com
+  tasks:
+    - name: Copy the file from local to remote 
+      copy:
+        src: /etc/passwd
+        dest: /tmp/passwd

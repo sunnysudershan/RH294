@@ -1,0 +1,8 @@
+---
+- name: Update db server
+  hosts: webservers
+  tasks:
+    - name: latest db package
+      yum: 
+        name: mariadb-server
+        state: absent

@@ -1,0 +1,13 @@
+#### Create an 0KB file with owner & group as devops  with 0640
+#
+---
+- name: Touch a file and set permission
+  hosts: serverd.lab.example.com
+  tasks:
+    - name: create files
+      file:
+        path: /tmp/file1
+        owner: devops
+        group: devops
+        mode: 0640
+        state: touch
