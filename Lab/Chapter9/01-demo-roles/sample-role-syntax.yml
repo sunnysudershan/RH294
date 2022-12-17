@@ -1,0 +1,31 @@
+---
+- name: play to illustrate order 
+  hosts: servera.lab.example.com
+  
+  pre_tasks:
+    - name:
+      debug:
+        msg: 'pre-task'
+      notify: myhandler
+
+
+  #roles:
+  #  - role1
+
+  tasks:
+    - name:
+      debug:
+        msg: 'first task1'
+      notify: myhandler
+
+  post_tasks:
+    - name:
+      debug:
+        msg: 'post-task'
+      notify: myhandler
+
+  handlers:
+  - name: myhandler
+    debug:
+      msg: 'handler excuted'
+

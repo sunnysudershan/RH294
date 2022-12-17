@@ -1,0 +1,26 @@
+---
+- name: Use myhost role playbook
+  hosts: webservers
+
+
+  pre_tasks:
+    - name: pre_tasks message
+      debug:
+        msg: 'Ensure webserver config'
+
+  roles:
+    - myhost
+
+  post_tasks:
+    - name: HTML Content is installed 
+      copy: 
+        src: files/html
+        dest: "/var/www/vhosts/{{ ansible_hostname }}"
+
+    - name: post_tasks message
+      debug:
+        msg: 'web server is configured'
+  handlers:
+    - service:
+        name: httpd
+        state: restarted

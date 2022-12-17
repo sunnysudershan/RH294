@@ -1,0 +1,7 @@
+---
+- name: use motd role playbook
+  hosts: servera.lab.example.com
+  remote_user: devops
+  become: true
+  roles:
+    - motd
