@@ -1,0 +1,4 @@
+---
+collections:
+  - name: http://materials.example.com/labs/role-collections/redhat-insights-1.0.5.tar.gz
+  - name: http://materials.example.com/labs/role-collections/redhat-rhel_system_roles-1.0.1.tar.gz

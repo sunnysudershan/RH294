@@ -1,0 +1,4 @@
+- src: git@workstation.lab.example.com:student/bash_env
+  scm: git
+  version: master
+  name: student.bash_env

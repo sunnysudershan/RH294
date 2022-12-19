@@ -1,0 +1,23 @@
+---
+- name: use student bash env
+  hosts: servera.lab.example.com
+  vars:
+    default_prompt: '[ \u on \h in \w dir ]$ '
+
+  pre_tasks:
+    - name: Ensure test user does not exit
+      user:
+        name: student2
+        state: absent
+        force: yes
+        remove: yes
+
+  roles:
+    - student.bash_env
+
+  post_tasks:
+    - name: create the test user
+      user:
+        name: student2
+        state: present
+        password: "{{ 'redhat' | password_hash ('sha512', 'mysecretsalt') }}"

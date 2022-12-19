@@ -1,0 +1,4 @@
+ssh_chroot_jain_users:
+  - name: sunny
+    home: /home/sunny
+    shell: /bin/bash

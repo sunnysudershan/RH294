@@ -1,0 +1,10 @@
+  lab role-collections start
+  mkdir 07-lab-collecton-roles
+  ansible-galaxy collection install http://materials.example.com/labs/role-collections/gls-utils-0.0.1.tar.gz
+  cd /home/student/.ansible/collections/ansible_collections/gls/utils
+  cat README.md
+  ansible-doc gls.utils.newping
+  cd /home/student/Labs/Lab/Chapter9/07-lab-collecton-roles/
+  vim bck.yml
+  ansible-playbook --syntax-check bck.yml
+  ansible-playbook bck.yml
