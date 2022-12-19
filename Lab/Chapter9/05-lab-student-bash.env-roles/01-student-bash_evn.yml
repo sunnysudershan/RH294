@@ -1,0 +1,24 @@
+---
+- name: user student bash env
+  hosts: devservers
+  vars:
+    default_prompt: '[\u on \h in \w dir ]$ '
+
+  pre_tasks:
+    - name: Ensure student2 user does not exit
+      user: 
+        name: student2
+        state: absent
+        force: yes
+        remove: yes
+
+  roles:
+    - student.bash_env
+
+  post_tasks:
+    - name: create the student2 user
+      user:
+        name: student2
+        state: present
+        password: "{{ 'redhat' | password_hash ('sha512','mysecretsalt') }}"
+

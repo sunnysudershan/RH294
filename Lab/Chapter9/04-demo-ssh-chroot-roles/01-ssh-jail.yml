@@ -1,0 +1,6 @@
+---
+- name: test the ssh chroot jail role
+  hosts: serverb.lab.example.com
+  become: yes
+  roles:
+    - geerlingguy.ssh-chroot-jail

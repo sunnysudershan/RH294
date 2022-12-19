@@ -1,16 +1,17 @@
 ---
-- name: play to illustrate order 
+- name: playbook for role syntax
   hosts: servera.lab.example.com
-  
+
+
   pre_tasks:
     - name:
       debug:
-        msg: 'pre-task'
+        msg: "pre_tasks output"
       notify: myhandler
 
 
-  #roles:
-  #  - role1
+  roles:
+    - roles/sunny.usertest
 
   tasks:
     - name:
@@ -19,13 +20,12 @@
       notify: myhandler
 
   post_tasks:
-    - name:
-      debug:
-        msg: 'post-task'
+    - name: 
+      debug: 
+        msg: 'post-task output'
       notify: myhandler
 
   handlers:
   - name: myhandler
     debug:
-      msg: 'handler excuted'
-
+      msg: "handler excuted"

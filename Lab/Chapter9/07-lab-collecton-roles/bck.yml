@@ -1,6 +1,6 @@
 ---
 - name: Backup the system configuration
-  hosts: servera.lab.example.com
+  hosts: serverc.lab.example.com
   become: true
   gather_facts: false
 

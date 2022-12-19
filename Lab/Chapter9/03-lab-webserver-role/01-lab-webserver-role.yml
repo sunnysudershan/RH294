@@ -1,0 +1,38 @@
+---
+- name: use myvhost role playbook
+  hosts: webservers
+
+  pre_tasks:
+    - name: pre_tasks message
+      debug:
+        msg: 'Ensure webserver config'
+
+  roles:
+    - myvhost
+
+  tasks:
+    - name: create vhost folder
+      file:
+        path: "/var/www/vhosts/{{ ansible_hostname }}"
+        state: directory
+        recurse: yes
+        owner: apache
+        group: apache
+
+
+    - name: Html content to copy
+      copy: 
+        src: roles/myvhost/files/html/index.html
+        dest: "/var/www/vhosts/{{ ansible_hostname }}"
+
+  post_tasks:
+    - name: post_taks message
+      debug:
+        msg: 'web server is configured'
+
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted
+
