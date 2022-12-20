@@ -1,0 +1,16 @@
+---
+- name: Repository Configuration
+  hosts: all
+  vars:
+    custom_pkg: example-motd
+  tasks:
+
+    - name: Gather package facts
+      package_facts:
+        manager: auto
+
+    - name: Show Package Facts for the custom package
+      debug:
+        var: ansible_facts.packages[custom_pkg]
+      when: custom_pkg in ansible_facts.packages
+

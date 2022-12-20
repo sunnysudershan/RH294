@@ -1,0 +1,969 @@
+    1  cd Labs/Lab/Chapter9/05-demo-ssh-chroot-jail/
+    2  ll
+    3  vim 01-ssh-jail.yml
+    4  vim 01-ssh-jail.yml 
+    5  cd roles/
+    6  ls
+    7  cd geerlingguy.ssh-chroot-jail/
+    8  ls
+    9  cd vars/
+   10  ls
+   11  vim main.yml
+   12  cd .././/.//
+   13  ll
+   14  cd ..
+   15  ll
+   16  cd ..
+   17  ls
+   18  cp -r ../04-lab-webserver-roles/ansible.cfg .
+   19  vim inventory
+   20  ll
+   21  vim ansible.cfg 
+   22  ansible-playbook 01-ssh-jail.yml 
+   23  ssh servera
+   24  git clone https://github.com/sunnysudershan/RH294.git
+   25  ls
+   26  cd RH294/
+   27  cd
+   28  cp -r RH294/ Labs
+   29  cd Labs/
+   30  ls
+   31  cd Lab/
+   32  ls
+   33  cd Chapter9
+   34  ll
+   35  mkdir 05-demo-ssh-chroot-jail
+   36  cd 05-demo-ssh-chroot-jail
+   37  ll
+   38  ansible-galaxy ssh --platforms EL --galaxy-tags system
+   39  ansible-galaxy search ssh --platforms EL --galaxy-tags system
+   40  ansible-galaxy install geerlingguy.ssh-chroot-jail -p roles
+   41  ll
+   42  cd roles/
+   43  ll
+   44  cd geerlingguy.ssh-chroot-jail/
+   45  ls
+   46  cd tasks/
+   47  ls
+   48  cat jail-user.yml 
+   49  ansible-playbook jail-user.yml 
+   50  cd ..
+   51  ll
+   52  vim README.md 
+   53  cd ..
+   54  ll
+   55  mkdir 06-lab-use-student.bash_env-role
+   56  cd 06-lab-use-student.bash_env-role
+   57  ls
+   58  lab role-galaxy start
+   59  cd
+   60  ls
+   61  cd role-galaxy/
+   62  ls
+   63  cp -r * ~/Labs/Lab/Chapter9/06-lab-use-student.bash_env-role/
+   64  cd ~/Labs/Lab/Chapter9/06-lab-use-student.bash_env-role/
+   65  ll
+   66  cd roles/
+   67  ls
+   68  vim roles/requirements.yml
+   69  cd ..
+   70  vim roles/requirements.yml
+   71  ansible-galaxy install -r roles/requirements.yml -p roles/
+   72  cd roles/
+   73  ll
+   74  cd student.bash_env/
+   75  ls
+   76  cd ..
+   77  cd .,.
+   78  cd ..
+   79  ls
+   80  vim 01-use-student.bash_env.yml
+   81  ls -l roles/student.bash_env/
+   82  vim 01-use-student.bash_env.yml 
+   83  ansible-playbook 01-use-student.bash_env.yml 
+   84  vim 01-use-student.bash_env.yml 
+   85  ansible-playbook 01-use-student.bash_env.yml 
+   86  ssh student2@servera
+   87  ll
+   88  cp 01-use-student.bash_env.yml 02-use-student.bash_env.yml 
+   89  vim 02-use-student.bash_env.yml 
+   90  rm-rf 02-use-student.bash_env.yml 
+   91  rm -rf 02-use-student.bash_env.yml 
+   92  cd
+   93  cd -
+   94  cd ..
+   95  ll
+   96  cp -r 06-lab-use-student.bash_env-role/ 06-02-lab-use-student.bash_env-role/
+   97  mv 06-lab-use-student.bash_env-role/ 06-01-lab-use-student.bash_env-role/
+   98  cd 06-02-lab-use-student.bash_env-role/
+   99  ll
+  100  cat roles/requirements.yml 
+  101  vim roles/requirements.yml
+  102  ansible-galaxy install -r roles/requirements.yml --force -p roles
+  103  ll
+  104  ls
+  105  vim 01-use-student.bash_env.yml 
+  106  vim roles/student.bash_env/templates/_bash_profile.j2 
+  107  ansible-playbook 01-use-student.bash_env.yml 
+  108  ssh student2@servera
+  109  cd ..
+  110  ll
+  111  lab role-collections start
+  112  mkdir 07-lab-collecton-roles
+  113  cd
+  114  ls
+  115  cp -r role-collections/* ~/Labs/Lab/Chapter9/07-lab-collecton-roles/
+  116  cd ~/Labs/Lab/Chapter9/07-lab-collecton-roles/
+  117  ll
+  118  ansible-galaxy collection install http://materials.example.com/labs/role-collections/gls-utils-0.0.1.tar.gz
+  119  cd /home/student/.ansible/collections/ansible_collections/gls/utils
+  120  ll
+  121  cat README.md 
+  122  ansible-doc gls.utils.newping
+  123  pwd
+  124  cd
+  125  cd ~/role-collections
+  126  l
+  127  ls
+  128  cd /home/student/Labs/Lab/Chapter9/07-lab-collecton-roles/
+  129  ll
+  130  vim bck.yml 
+  131  ansible-playbook --syntax-check bck.yml
+  132  ansible-playbook bck.yml
+  133  ls
+  134  cat requirements.yml 
+  135  ansible-galaxy collection install -r requirements.yml
+  136  vim new_system.yml
+  137  ansible-playbook --check new_system.yml
+  138  cd ..
+  139  ll
+  140  history 
+  141  history > Notes
+  142  vim Notes 
+  143  > Notes 
+  144  vim Notes 
+  145  lab role-review start
+  146  cd
+  147  ls -ltr
+  148  cd role-review/
+  149  ls
+  150  mkdir ~/Labs/Lab/Chapter9/08-lab-webserver
+  151  pwd
+  152  cp -r * ~/Labs/Lab/Chapter9/08-lab-webserver
+  153  cd ~/Labs/Lab/Chapter9/08-lab-webserver
+  154  ll
+  155  vim  web_dev_server.yml
+  156  ansible-playbook > --syntax-check web_dev_server.yml
+  157  ll
+  158  rm -rf "--syntax-check" 
+  159  ls
+  160  rm -rf '--syntax-check'
+  161  mv '--syntax-check' /opt/
+  162  mv '\--syntax-check' /opt/
+  163  ll
+  164  rm -rf "--syntax-check"
+  165  rm -rf "\--syntax-check"
+  166  ll
+  167  rm -rf "\--syntax-check\"
+  168  rm -rf "\--syntax*"
+  169  ll
+  170  cp -r ansible.cfg /opt/
+  171  mkdir /tmp/
+  172  mkdir /tmp/lab
+  173  cp -r ansible.cfg /tmp/lab
+  174  cp -r developer* /tmp/lab
+  175  cp -r inventory /tmp/lab
+  176  cp -r selinux.yml /tmp/lab
+  177  cp web_developers.yml /tmp/lab
+  178  cp web_dev_server.yml /tmp/lab
+  179  ls
+  180  rm -rf *
+  181  ll
+  182  rm -rf *
+  183  cd ..
+  184  rm -rf 08-lab-webserver/
+  185  mkdir 08-lab-webserver/
+  186  cd
+  187  ll
+  188  cd role-review/
+  189  ls
+  190  cp -r * ~/Labs/Lab/Chapter9/08-lab-webserver
+  191  cd ~/Labs/Lab/Chapter9/08-lab-webserver
+  192  ls
+  193  cp -r /tmp/lab/web_dev_server.yml .
+  194  ll
+  195  vim web_dev_server.yml 
+  196  ansible-playbook web_dev_server.yml --syntax-check
+  197  ansible-playbook web_dev_server.yml 
+  198  mkdir -v roles
+  199  vim roles/requirements.yml
+  200  ansible-galaxy install -r roles/requirements.yml -p roles
+  201  sudo yum install rhel-system-roles
+  202  cd roles/
+  203  ansible-galaxy init apache.developer_configs
+  204  vim roles/apache.developer_configs/meta/main.yml
+  205  mkdir roles/apache.developer_configs/meta/ -p
+  206  vim roles/apache.developer_configs/meta/main.yml
+  207  mv -v developer_tasks.yml roles/apache.developer_configs/tasks/main.yml
+  208  ls
+  209  cd ..
+  210  cp roles/roles/* roles/
+  211  cp -r roles/roles/* roles/
+  212  rm -rf roles/roles/
+  213  ll
+  214  mv -v developer_tasks.yml roles/apache.developer_configs/tasks/main.yml
+  215  mv -v developer.conf.j2 roles/apache.developer_configs/templates/
+  216  mkdir -pv group_vars/dev_webserver 
+  217   mv -v web_developers.yml group_vars/dev_webserver/
+  218  vim web_dev_server.yml
+  219  ansible-playbook web_dev_server.yml 
+  220  vim token
+  221  ls
+  222  cd Labs/
+  223  ls
+  224  git status
+  225  git add .
+  226  git commit -m "added"
+  227  git push origin main
+  228  git config --global user.email "sunnysudershan@gmail.com"
+  229  git config --global user.name "Sunny Ramplli"
+  230  git commit -m "Updated all the demos & labs"
+  231  git push origin main
+  232  cd
+  233  cd RH294/
+  234  ls
+  235  cd Lab/
+  236  ls
+  237  cd Chapter9/
+  238  ll
+  239  rm -rf *
+  240  mkdir 01-demo-roles
+  241  cd 01-demo-roles
+  242  ls
+  243  ansible-galaxy list
+  244  ansible-galaxy init sunny.usertest
+  245  ls
+  246  tree -F sunny.usertest/
+  247  ls
+  248  mkdir roles
+  249  mv sunny.usertest/ roles/
+  250  ls
+  251  ansible-galaxy --list
+  252  ansible-galaxy list
+  253  ls
+  254  vim sample-role-syntax.yml
+  255  ls -l roles/sunny.usertest/
+  256  vim sample-role-syntax.yml
+  257  vim ansible.cfg
+  258  vim inventory
+  259  ansible-playbook sample-role-syntax.yml 
+  260  vim sample-role-syntax.yml 
+  261  ansible-playbook sample-role-syntax.yml 
+  262  ll
+  263  cd roles/
+  264  ls
+  265  cd sunny.usertest/
+  266  ls
+  267  vim README.md 
+  268  cd ..
+  269  ansible-galaxy list
+  270  cd
+  271  cd .ansible/
+  272  ls
+  273  cd 
+  274  ls
+  275  cd /etc/ansible/roles/
+  276  ls
+  277  cd
+  278  cd /usr/share/ansible/roles/
+  279  ls
+  280  cd
+  281  cd RH294/Lab/Chapter9/
+  282  ls
+  283  cd 01-demo-roles/
+  284  cat ansible.cfg 
+  285  lab role-system start
+  286  cd
+  287  ls
+  288  cd role-system/
+  289  ls
+  290  mkdir ~/RH294/Lab/Chapter9/02-lab-timesync-roles
+  291  cp -r * ~/RH294/Lab/Chapter9/02-lab-timesync-roles
+  292  cd ~/RH294/Lab/Chapter9/02-lab-timesync-roles
+  293  ls
+  294  cat ansible.cfg 
+  295  cat inventory 
+  296  ls
+  297  cd roles/
+  298  ls
+  299  cat requirements.yml 
+  300  yum insall rhel-system-roles -y
+  301  yum install rhel-system-roles -y
+  302  sudo yum install rhel-system-roles -y
+  303  cd /usr/share/ansible/roles/
+  304  ls
+  305  ansible-galaxy list | grep time
+  306  cd /usr/share/doc/rhel-system-roles/timesync/
+  307  ls
+  308  vim README.md 
+  309  ll
+  310  vim example-timesync-playbook.yml 
+  311  vim README.md 
+  312  cd
+  313  cd RH294/Lab/Chapter9/02-lab-timesync-roles/
+  314  ll
+  315  cat inventory 
+  316  mkdir -pv groups_vars/all
+  317  mkdir -pv groups_vars/na_datacenter
+  318  mkdir -pv groups_vars/europe_datacenter
+  319  vim groups_vars/all/timesync.yml
+  320  cp groups_vars/all/timesync.yml groups_vars/europe_datacenter
+  321  cp groups_vars/all/timesync.yml groups_vars/na_datacenter/
+  322  cd groups_vars/na_datacenter/
+  323  ls
+  324  vim timesync.yml 
+  325  ansible-doc timezone | grep -A 4 "EXAMPLES"
+  326  timedatectl list-timezones | grep -i chicago
+  327  timedatectl list-timezones | grep -i Hels
+  328  vim groups_vars/europe_datacenter/timezone.yml
+  329  ls
+  330  vim timesync.yml 
+  331  cd ..
+  332  cp -r na_datacenter/timesync.yml europe_datacenter/
+  333  vim europe_datacenter/timesync.yml 
+  334  cd ..
+  335  ls
+  336  cat inventory 
+  337  vim 01-timesync-roles.yml
+  338  cat inventory 
+  339  vim 01-timesync-roles.yml
+  340  ansible-galaxy list | grep time
+  341  vim 01-timesync-roles.yml
+  342  cat groups_vars/na_datacenter/timesync.yml 
+  343  vim 01-timesync-roles.yml
+  344  ls
+  345  cd roles/
+  346  ls
+  347  cd /usr/share/ansible/roles/
+  348  ls
+  349  cd rhel-system-roles.timesync/
+  350  ls
+  351  ll
+  352  cd vars/
+  353  ls
+  354  cat main.yml 
+  355  cd ..
+  356  cd defaults/
+  357  ls
+  358  cat main.yml 
+  359  cd
+  360  cd RH294/Lab/Chapter9/02-lab-timesync-roles/
+  361  ls
+  362  ansible-playbook 01-timesync-roles.yml 
+  363  vim 01-timesync-roles.yml 
+  364  cd groups_vars/
+  365  ls
+  366  cd europe_datacenter/
+  367  grep host_timezone timesync.yml 
+  368  ls
+  369  vim timesync.yml 
+  370  cd ..
+  371  cd na_datacenter/
+  372  ls
+  373  vim timesync.yml 
+  374  cd ..
+  375  ll
+  376  ansible-playbook 01-timesync-roles.yml 
+  377  vim 01-timesync-roles.yml 
+  378  pwd
+  379  ll
+  380  vim ansible.cfg 
+  381  vim inventory 
+  382  cat groups_vars/all/timesync.yml 
+  383  vim 01-timesync-roles.yml 
+  384  ls
+  385  cd groups_vars/
+  386  cd ..
+  387  ls
+  388  mv groups_vars/ group_vars/
+  389  cd group_vars/
+  390  ll
+  391  cd ..
+  392  ll
+  393  ansible-playbook 01-timesync-roles.yml 
+  394  ansible database-server -m shell -a date
+  395  ansible database-servers -m shell -a date
+  396  cat inventory 
+  397  ansible database_servers -m shell -a date
+  398  lab role-system finish 
+  399  ansible database_servers -m shell -a date
+  400  cd
+  401  lab role-create start
+  402  ls -ltr
+  403  cd role-create/
+  404  ll
+  405  cat ansible.cfg 
+  406  cat inventory 
+  407  cat vhost.conf.j2 
+  408  mkdir ~/RH294/Lab/Chapter9/03-lab-webserver-role
+  409  cp -r * ~/RH294/Lab/Chapter9/03-lab-webserver-role
+  410  cd ~/RH294/Lab/Chapter9/03-lab-webserver-role
+  411  ls
+  412  ansible-galaxy init myvhost
+  413  ls
+  414  mkdir roles
+  415  mv myvhost/ roles/
+  416  cd roles/
+  417  ls
+  418  tree -F myvhost/
+  419  cd myvhost/
+  420  ls
+  421  rm -rf defaults/
+  422  rm -rf vars/
+  423  rm -rf tests/
+  424  ll
+  425  vim tasks/main.yml 
+  426  cd ..
+  427  ls
+  428  cd ..
+  429  ls
+  430  cat vhost.conf.j2 
+  431  cp vhost.conf.j2 roles/myvhost/templates/
+  432  cd roles/myvhost/tasks/
+  433  vim main.yml 
+  434  cd ..
+  435  ls
+  436  cd ..
+  437  ls
+  438  cd roles/
+  439  ls
+  440  cd myvhost/
+  441  ls
+  442  mkdir files/html
+  443  vim files/html/index.html
+  444  cd ..
+  445  ll
+  446  vim 01-lab-webserver-role.yml
+  447  ansible-playbook 01-lab-webserver-role.yml 
+  448  vim 01-lab-webserver-role.yml 
+  449  cd roles/myvhost/tasks/
+  450  ls
+  451  vim main.yml 
+  452  ssh servera
+  453  ls
+  454  vim main.yml 
+  455  cd ..
+  456  cd templates/
+  457  ls
+  458  ls -l vhost.conf.j2
+  459  vim vhost.conf.j2 
+  460  cd ..
+  461  ls
+  462  cd ..
+  463  ls
+  464  cd ..
+  465  vim ansible.cfg 
+  466  cp -r ../02-lab-timesync-roles/ansible.cfg .
+  467  vim ansible.cfg 
+  468  ansible-galaxy list
+  469  ansible-playbook 01-lab-webserver-role.yml 
+  470  vim inventory 
+  471  vim 01-lab-webserver-role.yml 
+  472  ansible-playbook 01-lab-webserver-role.yml 
+  473  vim 01-lab-webserver-role.yml 
+  474  ansible-playbook 01-lab-webserver-role.yml 
+  475  ls -l roles/myvhost/files/html/index.html 
+  476  ls
+  477  vim 01-lab-webserver-role.yml 
+  478  ansible-playbook 01-lab-webserver-role.yml 
+  479  vim 01-lab-webserver-role.yml
+  480  ansible-doc file
+  481  vim 01-lab-webserver-role.yml
+  482  ansible-playbook 01-lab-webserver-role.yml 
+  483  vim 01-lab-webserver-role.yml
+  484  ansible-playbook 01-lab-webserver-role.yml 
+  485  ll
+  486  cd
+  487  ansible-galaxy search ssh
+  488  ansible-galaxy search ssh --help
+  489  ansible-galaxy search ssh --platforms EL
+  490  ansible-galaxy search ssh --platforms EL --galaxy-tags system
+  491  ansible-galaxy search ssh --platforms EL --galaxy-tags system --author geerlingguy
+  492  mkdir RH294/Lab/Chapter9/04-demo-ssh-chroot-roles
+  493  cd RH294/Lab/Chapter9/04-demo-ssh-chroot-roles
+  494  ls
+  495  ansible-galaxy install geerlingguy.ssh-chroot-jail -p roles
+  496  tree -F roles/
+  497  ansible-galaxy install geerlingguy.ssh-chroot-jail 
+  498  ls
+  499  cd roles/
+  500  ls
+  501  cd geerlingguy.ssh-chroot-jail/
+  502  ls
+  503  cd ..
+  504  ls
+  505  cd ..
+  506  ll
+  507  vim 01-ssh-jail.yml
+  508  vim roles/geerlingguy.ssh-chroot-jail/README.md 
+  509  vim 01-ssh-jail.yml
+  510  ansible-playbook 01-ssh-jail.yml 
+  511  vim in
+  512  ls
+  513  cp -r ../03-lab-webserver-role/ansible.cfg .
+  514  cp -r ../03-lab-webserver-role/inventory .
+  515  vim inventory 
+  516  ansible-playbook 01-ssh-jail.yml 
+  517  cd
+  518  lab role-galaxy start
+  519  ls
+  520  cd role-galaxy/
+  521  ls
+  522  cat ansible.cfg 
+  523  cat inventory 
+  524  cd roles/
+  525  ls
+  526  cd ..
+  527  cd
+  528  mkdir RH294/Lab/Chapter9/05-lab-student-bash.env-roles
+  529  cd -
+  530  cp -r * RH294/Lab/Chapter9/05-lab-student-bash.env-roles
+  531  cp -r * /home/student/RH294/Lab/Chapter9/05-lab-student-bash.env-roles
+  532  cd /home/student/RH294/Lab/Chapter9/05-lab-student-bash.env-roles
+  533  ls
+  534  cd roles/
+  535  ls
+  536  vim requirements.yml
+  537  cd ..
+  538  ansible-galaxy install -r roles/requirements.yml -p roles/
+  539  vim roles/requirements.yml 
+  540  ansible-galaxy install -r roles/requirements.yml -p roles/
+  541  cd roles/
+  542  ls
+  543  cd student.bash_env/
+  544  ls
+  545  cd tasks/
+  546  ls
+  547  vim main.yml 
+  548  cd ..
+  549  ls
+  550  cd templates/
+  551  ls
+  552  vim _bash_profile.j2 
+  553  vim _bashrc.j2 
+  554  vim _vimrc.j2 
+  555  cd ..
+  556  ls
+  557  cd ..
+  558  las
+  559  cd ..
+  560  ls
+  561  vim 01-student-bash_evn.yml
+  562  ansible-playbook 01-student-bash_evn.yml 
+  563  vim 01-student-bash_evn.yml
+  564  ansible-playbook 01-student-bash_evn.yml 
+  565  ssh student2@servera
+  566  ls
+  567  cd roles/
+  568  ls
+  569  vim requirements.yml 
+  570  ansible-galaxy install -r roles/requirements.yml -p roles/ --force
+  571  cd ..
+  572  ansible-galaxy install -r roles/requirements.yml -p roles/ --force
+  573  vim roles/student.bash_env/tasks/main.yml 
+  574  vim roles/student.bash_env/templates/_bashrc.j2 
+  575  vim roles/student.bash_env/templates/_bash_profile.j2 
+  576  cp -r 01-student-bash_evn.yml 02-student-bash_evn.yml 
+  577  vim 02-student-bash_evn.yml
+  578  ansible-playbook 02-student-bash_evn.yml 
+  579  ssh student2@servera
+  580  ls
+  581  cd Labs/
+  582  ls
+  583  cd Lab/
+  584  ls
+  585  cd Chapter9/
+  586  ll
+  587  cd 07-lab-collecton-roles/
+  588  ll
+  589  ansible-playbook bck.yml 
+  590  ansible-playbook new_system.yml 
+  591  ll
+  592  vim inventory 
+  593  vim new_system.yml 
+  594  ansible-playbook bck.yml 
+  595  ansible-playbook new_system.yml 
+  596  vim inventory 
+  597  ansible-playbook bck.yml 
+  598  vim bck.yml 
+  599  ansible-playbook bck.yml 
+  600  ansible-playbook new_system.yml 
+  601  vim bck.yml 
+  602  vimin
+  603  vim inventory 
+  604  ansible-playbook bck.yml 
+  605  ansible-playbook new_system.yml 
+  606  ls
+  607  cd RH294/
+  608  ls
+  609  cd Lab/
+  610  ls
+  611  cd Chapter9/
+  612  ls
+  613  cp -r * ~/Labs/Lab/Chapter9/
+  614  cd ~/Labs/Lab/Chapter9/
+  615  ls
+  616  ll
+  617  cd ../../..
+  618  cd Labs/
+  619  ls
+  620  git status
+  621  cd
+  622  cat token 
+  623  cd -
+  624  git commit -m "added"
+  625  git add .
+  626  git commit -m "added"
+  627  git push origin main
+  628  lab role-collections start
+  629  cd
+  630  ls -ltr
+  631  rm -rf role-*
+  632  lab role-collections finish 
+  633  lab role-collections start
+  634  ls -ltr
+  635  cd role-collections/
+  636  ll
+  637  ansible-galaxy collection install http://materials.example.com/labs/role-collections/gls-utils-0.0.1.tar.gz
+  638  ll
+  639  ls -l  ~/.ansible/collections/ansible_collections/gls/utils/roles
+  640  cat ~/.ansible/collections/ansible_collections/gls/utils/roles/backup/README.md |less
+  641  ls -l ~/.ansible/collections/ansible_collections/gls/utils/plugins/modules
+  642  ansible-doc gls.utils.newping
+  643  cd ~/role-collections
+  644  ls
+  645  vim bck.yml 
+  646  ansible-playbook bck.yml
+  647  ansible-galaxy collection install -r requirements.yml
+  648  ansible-playbook --check new_system.yml
+  649  ansible-playbook new_system.yml
+  650  ls
+  651  lab role-collections finish
+  652  lab system-review start
+  653  cd
+  654  ls -ltr
+  655  cd system-review/
+  656  ls
+  657  vim repo_playbook.yml
+  658  ansible-playbook repo_playbook.yml
+  659  cd ..
+  660  ll
+  661  ansible-playbook repo_playbook.yml
+  662  cd -
+  663  ls
+  664  pwd
+  665  mkdir vars
+  666  vim vars/users_vars.yml
+  667  vim users.yml
+  668  ansible-playbook users.yml
+  669  vim users.yml 
+  670  ansible-playbook users.yml
+  671  vim users.yml 
+  672  ansible-playbook users.yml
+  673  cat storage.yml 
+  674  vim storage.yml 
+  675   ansible-playbook storage.yml
+  676  vim create_crontab_file.yml
+  677  ansible-playbook create_crontab_file.yml
+  678  ansible-galaxy list
+  679  ll
+  680  vim network_playbook.yml
+  681  mkdir -pv group_vars/webservers
+  682  vim group_vars/webservers/network.yml
+  683  ansible-playbook network_playbook.yml
+  684  lab system-review grade
+  685  cd ..
+  686  ls
+  687  cp -r system-review/ Labs/Lab/Chapter9/
+  688  cp -r role-collections/ Labs/Lab/Chapter9/
+  689  cd Labs/Lab/Chapter9/
+  690  ll
+  691  mv role-collections/ 09-lab-backup/
+  692  mv system-review/ 10-lab-infra/
+  693  ll
+  694  cd ..
+  695  ll
+  696  cd
+  697  cat token 
+  698  cd -
+  699  ls
+  700  git  add .
+  701  git status
+  702  git commit -m "added"
+  703  git push origin main
+  704  cd
+  705  lab troubleshoot-playbook start
+  706  ls -ltr
+  707  cd troubleshoot-playbook/
+  708  ls
+  709  vim ansible.cfg
+  710  ll
+  711  cd troubleshoot-playbook/
+  712  ll
+  713  ansible-playbook samba.yml 
+  714  vim samba.yml 
+  715  ansible-playbook samba.yml 
+  716  vim samba.yml 
+  717  ansible-playbook samba.yml 
+  718  vim samba.yml 
+  719  ansible-playbook samba.yml 
+  720  vim samba.yml ssh servera
+  721  ssh servera
+  722  vim samba.yml 
+  723  vim inventory 
+  724  ansible-playbook samba.yml 
+  725  ll
+  726  vim samba.yml #
+  727  ansible-playbook samba.yml 
+  728  ansible-playbook samba.yml --step
+  729  lab troubleshoot-host start
+  730  cd
+  731  ls -ltr
+  732  cd troubleshoot-host/
+  733  ll
+  734  ansible-playbook mailrelay.yml --check
+  735  vim mailrelay.yml 
+  736  ansible-playbook mailrelay.yml 
+  737  ansible servera.lab.example.com -u devops -b -a "head /etc/postfix/main.cf"
+  738  vim mailrelay.yml 
+  739  ansible-playbook mailrelay.yml 
+  740  lab troubleshoot-review sttttttttttttttttttaaaaaaaaaaaaaaaaaartttttttttttttttttt
+  741  lab troubleshoot-review start
+  742  cd ..
+  743  ll
+  744  ls -ltr
+  745  cd troubleshoot-review/
+  746  ll
+  747  ansible-playbook --syntax-check secure-web.yml
+  748  vim secure-web.yml 
+  749  ansible-playbook --syntax-check secure-web.yml
+  750  vim secure-web.yml 
+  751  ansible-playbook --syntax-check secure-web.yml
+  752  vim secure-web.yml 
+  753  ansible-playbook --syntax-check secure-web.yml
+  754  ansible-playbook secure-web.yml
+  755  vim inventory 
+  756  ansible-playbook secure-web.yml
+  757  vim inventory 
+  758  ansible-playbook secure-web.yml
+  759  vim secure-web.yml 
+  760  ansible-playbook secure-web.yml
+  761  vim secure-web.yml 
+  762  ansible-playbook secure-web.yml
+  763  vim secure-web.yml 
+  764  ansible-playbook secure-web.yml
+  765  cd
+  766  ll
+  767  mkdir Labs/Lab/Chapter10/
+  768  cp -r troubleshoot-* Labs/Lab/Chapter10/
+  769  cd Labs/Lab/Chapter10/
+  770  ll
+  771  cd ...//.
+  772  cd ../
+  773  ll
+  774  cd ..
+  775  ll
+  776  pwd
+  777  cd
+  778  cat token 
+  779  cd -
+  780  git  add .
+  781  git commit -m "added"
+  782  git push origin main
+  783  lab system-software start
+  784  ls -ltr
+  785  cd system-software/
+  786  ls
+  787  cat ansible.cfg 
+  788  cat inventory 
+  789  vim repo_playbook.yml
+  790  ansible-playbook repo_playbook.yml
+  791  vim repo_playbook.yml
+  792  ansible-playbook repo_playbook.yml
+  793  vim repo_playbook.yml
+  794  ansible-playbook repo_playbook.yml
+  795  vim repo_playbook.yml
+  796  ansible-doc package_facts
+  797  !
+  798  vim repo_playbook.yml
+  799  ansible-playbook  repo_playbook.yml 
+  800  ll
+  801  cp repo_playbook.yml 02_repo_playbook.yml 
+  802  mv repo_playbook.yml 01_repo_playbook.yml
+  803  vim 01_repo_playbook.yml
+  804  ansible-playbook  01_repo_playbook.yml
+  805  vim 01_repo_playbook.yml
+  806  ansible-playbook  01_repo_playbook.yml -vvv
+  807  ls
+  808  vim 01_repo_playbook.yml 
+  809  ansible-playbook  01_repo_playbook.yml
+  810  cp 02_repo_playbook.yml 03_repo_playbook.yml 
+  811  vim 03_repo_playbook.yml
+  812  ansible-playbook  03_repo_playbook.yml
+  813  ansible all -m yum -a 'name=example-motd state=absent'
+  814  lab system-software finish 
+  815  ansible-playbook  01_repo_playbook.yml 
+  816  ansible-playbook 03_repo_playbook.yml 
+  817  lab system-software finish 
+  818  mkdir ~/Labs/Lab/Chapter11
+  819  cd ~/Labs/Lab/Chapter10
+  820  ls
+  821  cd -
+  822  cd ..
+  823  cp -r system-software/ ~/Labs/Lab/Chapter11/
+  824  cd ~/Labs/Lab/Chapter11/
+  825  ll
+  826  mv system-software/ 01-lab-mngsw-subscriptions
+  827  cd 01-lab-mngsw-subscriptions
+  828  ls
+  829  cd
+  830  lab system-users start
+  831  ls -ltr
+  832  cd system-users/
+  833  ll
+  834  cat vars/users_vars.yml 
+  835  vim users.yml
+  836  ansible-playbook  users.yml
+  837  vim users.yml
+  838  ansible-playbook  users.yml
+  839  cp users.yml 01-users.yml
+  840  vim users.yml 
+  841  vim users.yml
+  842  ansible-playbook  users.yml
+  843  ll
+  844  mv users.yml 02-users.yml 
+  845  l
+  846  vim 02-users.yml 
+  847  ll
+  848  cd files/
+  849  ls
+  850  ll
+  851  cat user1.key.pub 
+  852  lab system-users finish 
+  853  cd ..
+  854  cp -r system-users/ ~/Labs/Lab/Chapter11/02-lab-system-users
+  855  lab system-process start
+  856  cd system-process/
+  857  ls
+  858  vim create_crontab_file.yml
+  859  ansible-playbook create_crontab_file.yml
+  860  ansible webservers -u devops -b -a "cat /etc/cron.d/add-data-time"
+  861  ansible webservers -u devops -b -a "cat /etc/cron.d/add-date-time"
+  862  vim remove_cron_job.yml
+  863  ll
+  864  ansible-playbook remove_cron_job.yml 
+  865  ansible webservers -u devops -b -a "cat /etc/cron.d/add-date-time"
+  866  ll
+  867  mv create_crontab_file.yml 01-create_crontab_file.yml 
+  868  mv remove_cron_job.yml 02-remove_cron_job.yml 
+  869  vim schedule_at_tasks.yml
+  870  ansible-playbook schedule_at_tasks.yml 
+  871  ansible webservers -u devops -b -a "cat /etc/cron.d/add-date-time"
+  872  ansible webservers -u devops -b -a "ls -l my_at_date_time"
+  873  ansible webservers -u devops -b -a "cat my_at_date_time"
+  874  mv schedule_at_tasks.yml 03-schedule_at_tasks.yml 
+  875  ll
+  876  vim set_default_boot_target_graphical.yml
+  877  ansible-playbook set_default_boot_target_graphical.yml
+  878  ansible webservers -u devops -b -a "systemctl get-default"
+  879  mv set_default_boot_target_graphical.yml 04-set_default_boot_target_graphical.yml 
+  880  ll
+  881  vim reboot_hosts.yml
+  882  ansible-playbook  reboot_hosts.yml
+  883  vim reboot_hosts.yml
+  884  ansible-playbook  reboot_hosts.yml
+  885  mv reboot_hosts.yml 06_reboot_hosts.yml 
+  886  ll
+  887  mv 06_reboot_hosts.yml 05_reboot_hosts.yml 
+  888  ll
+  889  ansible webservers -u devops -b -a "who -b"
+  890  ansible webservers -u devops -b -a "systemctl get-default"
+  891  vim set_default_target_multi-user.yml
+  892  ansible-playbook set_default_target_multi-user.yml 
+  893  ansible webservers -u devops -b -a "systemctl get-default"
+  894  mv set_default_target_multi-user.yml 06-set_default_target_multi-user.yml 
+  895  ll
+  896  lab system-process finish 
+  897  cd ..
+  898  cp -r system-process/ Labs/Lab/Chapter11/03-system-process/
+  899  cd Labs/Lab/Chapter11/03-system-process/
+  900  ls
+  901  cd -
+  902  lab system-storage start
+  903  cd system-s
+  904  cd system-storage/
+  905  ll
+  906  vim storage_vars.yml 
+  907  vim storage.yml 
+  908  ansible-playbook storage.yml 
+  909  ls
+  910  cp storage.yml 01-storage.yml 
+  911  vim storage.yml 
+  912  ansible all -m setup -a "filter=ansible_lvm"
+  913  ansible-playbook storage.yml 
+  914  vim storage.yml
+  915  ansible-playbook storage.yml 
+  916  vim storage.yml
+  917  ansible-playbook storage.yml 
+  918  vim storage.yml
+  919  ansible all -m setup -a "filter=ansible_lvm"
+  920  ansible-playbook storage.yml 
+  921  ansible all -m setup -a "filter=ansible_lvm"
+  922  ll
+  923  cp storage.yml 02-storage.yml 
+  924  vim storage.yml 
+  925  ansible-playbook storage.yml
+  926  vim storage.yml 
+  927  ansible-playbook storage.yml
+  928  vim storage.yml 
+  929  ansible-playbook storage.yml
+  930  vim storage.yml 
+  931  ansible-playbook storage.yml
+  932  vim storage.yml 
+  933  ansible-playbook  storage
+  934  ansible-playbook  storage.yml 
+  935  ll
+  936  mv storage.yml 03-storage.yml
+  937  ll
+  938  ansible all -a lsblk
+  939  cp storage_vars.yml storage_vars-2.yml 
+  940  vim storage_vars-2.yml
+  941  cp 03-storage.yml 04-storage.yml 
+  942  vim 04-storage.yml
+  943  mv storage_vars-2.yml storage_vars_2.yml
+  944  ansible-playbook 04-storage.yml 
+  945  cd ..
+  946  ls
+  947  cp -r system-storage/ Labs/Lab/Chapter11/04-system-storage/
+  948  cd Labs/Lab/Chapter11/
+  949  ll
+  950  mv 03-system-process/ 03-lab-system-process/
+  951  mv 04-system-storage/ 04-lab-system-storage/
+  952  cd 04-lab-system-storage/
+  953  ll
+  954  cd
+  955  cd Labs/Lab/Chapter10/
+  956  ls
+  957  mv troubleshoot-playbook 01-lab-troubleshoot-playbook
+  958  mv troubleshoot-host 02-troubleshoot-host-playbook
+  959  mv troubleshoot-review 03-troubleshoot-review
+  960  cd 03-troubleshoot-review
+  961  ls
+  962  cd
+  963  cd Labs/
+  964  ls
+  965  cd
+  966  cat token 
+  967  cd Labs/
+  968  history 
+  969  history > Lab/Chapter11/Notes.text

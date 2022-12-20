@@ -1,0 +1,12 @@
+---
+- name: Remove schdeduled cron job
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: cron job removed
+      cron:
+        name: Add date and time to a file
+        user: devops
+        cron_file: add-date-time
+        state: absent
